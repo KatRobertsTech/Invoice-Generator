@@ -99,3 +99,10 @@ h2 {
     font-weight: 500;
     margin-top: 50px;
 }
+
+/*-------------innerHTML styling-----------------*/
+
+.align-right {
+    /* display: flex;
+    justify-content: flex-end; */
+}
