@@ -72,6 +72,8 @@ h2 {
     display: flex;
     justify-content: space-between;
     border-top: 1px solid white;
+    padding-top: 15px;
+    margin-top: 10px;
 }
 
 /*-------------LINKS & BUTTONS-----------------*/
@@ -97,12 +99,15 @@ h2 {
     font-size: 1rem;
     line-height: 1rem;
     font-weight: 500;
-    margin-top: 50px;
+    margin-top: 40px;
+}
+
+.selected-btn {
+    background: purple;
 }
 
 /*-------------innerHTML styling-----------------*/
 
 .align-right {
-    /* display: flex;
-    justify-content: flex-end; */
+    text-align: right;
 }
