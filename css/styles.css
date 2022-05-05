@@ -23,7 +23,7 @@ h1 {
 
 h2 {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .container {
@@ -102,12 +102,36 @@ h2 {
     margin-top: 40px;
 }
 
-.selected-btn {
-    background: purple;
-}
 
 /*-------------innerHTML styling-----------------*/
 
 .align-right {
     text-align: right;
+}
+
+#total-el {
+    font-size: 2rem;
+    margin: 10px 0;
+    font-weight: 500;
+}
+#amount-el div p {
+    font-size: 1.25rem;
+    margin: 15px 0;
+    font-weight: 500;
+}
+
+#task-el div p {
+    font-size: 1.25rem;
+    margin: 15px 0;
+    font-weight: 500;
+}
+
+.light-grey {
+    color: #918E9B;
+}
+
+.remove {
+    display: inline;
+    padding: 0 15px;
+    font-size: 0.75rem;
 }
