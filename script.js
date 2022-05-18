@@ -72,7 +72,7 @@ function taskInnerHtml (serviceName, servicePrice) {
 };
 
 function totalInnerHtml () {
-    const totalInnerHtml = `<div class="half" id="hide-el">
+    const totalInnerHtml = `<div class="half">
                                 <p class="margin0"><span class="light-grey notes">${notes.note1}</span></p>  
                             </div>
                             <div class="align-right half">
@@ -154,10 +154,6 @@ weeds.button.addEventListener('click', function() {
 
 
 sendBtn.addEventListener('click', function(){
-    const hideEl = document.querySelector('#hide-el');
-    // hideEl.classList.add('hide');
-    hideEl.style.visibility = "hidden";
-    console.log(hideEl);
     total = 0;
     wash.button.disabled = false;
     mow.button.disabled = false;
