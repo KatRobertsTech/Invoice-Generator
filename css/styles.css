@@ -8,7 +8,6 @@ body {
     background: lightskyblue;
     color: white;
     font-family: 'Inter', sans-serif;
-    display: flex;
     justify-content: center;
 }
 
@@ -32,14 +31,9 @@ h2 {
     background: #1F2937;
 }
 
-.text-box {
-
-}
-
 .top {
     height: 190px;
     background: #3A69D2;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -57,23 +51,27 @@ h2 {
 }
 .button-div {
     margin-top: 40px;
-    /* width: 473px; */
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
 }
 
-.task-amount {
-    display: flex;
-    justify-content: space-between;
+.half {
+    width: 100%;
+}
+.task-main {
+    widht: 100%;
 }
 
+
 .notes-total {
-    display: flex;
-    justify-content: space-between;
     border-top: 1px solid white;
     padding-top: 15px;
     margin-top: 10px;
+}
+
+.display-flex {
+    display:flex;
 }
 
 /*-------------LINKS & BUTTONS-----------------*/
@@ -114,15 +112,10 @@ h2 {
     margin: 10px 0;
     font-weight: 500;
 }
-#amount-el div p {
-    font-size: 1.25rem;
-    margin: 15px 0;
-    font-weight: 500;
-}
 
 #task-el div p {
     font-size: 1.25rem;
-    margin: 15px 0;
+    margin: 5px 0;
     font-weight: 500;
 }
 
@@ -131,7 +124,17 @@ h2 {
 }
 
 .remove {
-    display: inline;
     padding: 0 15px;
     font-size: 0.75rem;
+}
+
+.notes {
+    font-size: 0.75rem;
+}
+.margin0 {
+    margin: 0;
+}
+
+.hide {
+    visibility: hidden;
 }
