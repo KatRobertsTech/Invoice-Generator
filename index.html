@@ -10,9 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="display-flex">
     <div class="container">
-        <div class="top">
+        <div class="top display-flex">
             <div class="text-box">
                 <h1>Invoice Generator</h1>
                 <p class="more-info">Thanx for choosing GoodCorp. LLC!</p>
@@ -25,26 +25,36 @@
                 <button class="service-btn" id="mow-btn">Mow Lawn: $20</button>
                 <button class="service-btn" id="weeds-btn">Pull Weeds: $30</button>
             </div>
-            <div class="task-amount">
-                <div class="task">
+            <div class="task-amount display-flex">
+                <div class="task half">
                     <h2>Task</h2>
-                    <div id="task-el"></div>
+                    <!-- <div id="task-el"></div> -->
                 </div>
-                <div class="amount">
-                    <h2 class="align-right">Amount</h2>
-                    <div id="amount-el"></div>
+                <div class="amount half align-right">
+                    <h2>Amount</h2>
+                    <!-- <div id="amount-el" class="remove"></div> -->
                 </div>
             </div>
-            <div class="notes-total">
-                <div class="notes">
+
+            <div class="task-main" id="task-el">
+
+            </div>
+
+            <div class="notes-total display-flex">
+                <div class="notes half">
                     <h2>Notes</h2>
-                    <div id="notes-el"></div>
+                    <!-- <div id="notes-el" class="remove"></div> -->
                 </div>
-                <div class="total">
+                <div class="total half align-right">
                     <h2>Total Amount</h2>
-                    <div><p id="total-el" class="align-right">$0</p></div>
+                    <!-- <div><p id="total-el" class="align-right">$0</p></div> -->
                 </div>
             </div>
+
+            <div class="total-main display-flex" id="total-el">
+
+            </div>
+
             <button class="send-btn" id ="send-btn">Send Invoice</button>
         </div>
     </div>
