@@ -1,37 +1,35 @@
-const washBtn = document.querySelector('#wash-btn');
-const mowBtn = document.querySelector('#mow-btn');
-const weedsBtn = document.querySelector('#weeds-btn');
 const sendBtn = document.querySelector('#send-btn');
-
 const taskEl = document.querySelector('#task-el');
-const amountEl = document.querySelector('#amount-el');
-const notesEl = document.querySelector('#notes-el');
 const totalEl = document.querySelector('#total-el');
 
-// const removeEl = document.querySelectorAll('.remove');
-// removeEl.addEventListener('click', function(){
-//     console.log(removeEl);
-// });
-
-
-let servicesToBuy = [];
 let total = 0;
-// const service4 = ["Service Name", price, id]
-const service1 = ["Wash Car", 10, 1];
-const service2 = ["Mow Lawn", 20, 2];
-const service3 = ["Pull Weeds", 30, 3];
 
-function reset () {
-    servicesToBuy = [];
-    total = 0;
-    washBtn.disabled = false;
-    mowBtn.disabled = false;
-    weedsBtn.disabled = false;
-    taskEl.innerHTML='';
-    amountEl.innerHTML='';
-    notesEl.innerHTML='';
-    totalEl.innerHTML = `$${total}`
+const wash = {
+    button: document.querySelector('#wash-btn'), 
+    name: "Wash Car",
+    price: 10,
 };
+
+const mow = {
+    button: document.querySelector('#mow-btn'),
+    name: "Mow Lawn",
+    price: 20,
+};
+
+
+const weeds = {
+    button: document.querySelector('#weeds-btn'),
+    name: "Pull Weeds",
+    price: 30,
+}
+
+const notes = {
+    note1: "We accept cash, credit card, or PayPal"
+}
+
+updateTotal();
+
+
 
 function mouseover (e) {
     e.target.style.background = '#3A69D2';
@@ -51,60 +49,119 @@ function mouseup (e) {
     e.target.style.border = '';
 }
 
-// function removeWashBtn() {
-//     console.log('remove this');
-//     let taskToRemove = document.querySelectorAll(`.remove${service1[2]}`);
-//     console.log(taskToRemove);
-//     task.firstElementChild.innerHTML='';
-// }
+wash.button.addEventListener('mouseover', mouseover);
+wash.button.addEventListener('mouseleave', mouseleave)
+wash.button.addEventListener('mouseup', mouseup);
 
-washBtn.addEventListener('mouseover', mouseover);
-washBtn.addEventListener('mouseleave', mouseleave)
-washBtn.addEventListener('mouseup', mouseup);
+mow.button.addEventListener('mouseover', mouseover);
+mow.button.addEventListener('mouseleave', mouseleave)
+mow.button.addEventListener('mouseup', mouseup);
 
-mowBtn.addEventListener('mouseover', mouseover);
-mowBtn.addEventListener('mouseleave', mouseleave)
-mowBtn.addEventListener('mouseup', mouseup);
-
-weedsBtn.addEventListener('mouseover', mouseover);
-weedsBtn.addEventListener('mouseleave', mouseleave)
-weedsBtn.addEventListener('mouseup', mouseup);
+weeds.button.addEventListener('mouseover', mouseover);
+weeds.button.addEventListener('mouseleave', mouseleave)
+weeds.button.addEventListener('mouseup', mouseup);
 
 
-washBtn.addEventListener('click', function() {
-    servicesToBuy.push(service1[0]);
-    taskEl.innerHTML += `<div><p>${service1[0]}<span class="light-grey remove" onclick="removeWashBtn()">remove</span></p></div>`;
-    amountEl.innerHTML += `<div class="align-right"><p><span class="light-grey">$</span>${service1[1]}</p></div>`;
-    notesEl.innerHTML = `<div><p>We accept cash, credit card, or paypal</p></div>`
-    total += service1[1];
-    totalEl.innerHTML = `<span class="light-grey">$</span>${total}`;
-    washBtn.disabled = true;
+function taskInnerHtml (serviceName, servicePrice) {
+    const taskInnerHtml = `<div class="half">
+                            <p>${serviceName}<span class="light-grey remove">remove</span></p>  
+                       </div><div class="align-right half">
+                            <p><span class="light-grey">$</span>${servicePrice}</p>
+                       </div>`
+    return taskInnerHtml;
+};
+
+function totalInnerHtml () {
+    const totalInnerHtml = `<div class="half" id="hide-el">
+                                <p class="margin0"><span class="light-grey notes">${notes.note1}</span></p>  
+                            </div>
+                            <div class="align-right half">
+                                <p class="margin0"><span class="light-grey">$</span>${total}</p>
+                            </div>`;
+    return totalInnerHtml;
+}
+
+function remove() {
+    this.remove();
+}
+
+function updateTotal(){
+    const newTotal = totalEl.innerHTML;
+    totalEl.innerHTML = `${totalInnerHtml()}`;
+    return newTotal;
+}
+
+
+wash.button.addEventListener('click', function(e) {
+    const newDiv1 = document.createElement('div');
+    newDiv1.classList.add('display-flex');
+    newDiv1.innerHTML = `${taskInnerHtml(wash.name, wash.price)}`;
+    console.log(newDiv1);
+    taskEl.appendChild(newDiv1);
+    total += wash.price;
+    updateTotal();
+    wash.button.disabled = true;
+    newDiv1.addEventListener('click', remove);
+    newDiv1.addEventListener('click', function(){
+        this.remove();
+        total -= wash.price;
+        console.log(total);
+        updateTotal();
+    })
+});
+
+taskEl.addEventListener('click', function(e){
+    console.log(e);
+    // e.target.nodeName === 'newDiv1' && e.target.remove();
+    e.target.remove();
+
+});
+
+mow.button.addEventListener('click', function() {
+    const newDiv2 = document.createElement('div');
+    newDiv2.classList.add('display-flex');
+    newDiv2.innerHTML = `${taskInnerHtml(mow.name, mow.price)}`;
+    console.log(newDiv2);
+    taskEl.appendChild(newDiv2);
+    total += mow.price;
+    updateTotal();
+    mow.button.disabled = true;
+    newDiv2.addEventListener('click', function(){
+        this.remove();
+        total -= mow.price;
+        console.log(total);
+        updateTotal();
+    })
+});
+
+weeds.button.addEventListener('click', function() {
+    const newDiv3 = document.createElement('div');
+    newDiv3.classList.add('display-flex');
+    newDiv3.innerHTML = `${taskInnerHtml(weeds.name, weeds.price)}`;
+    console.log(newDiv3);
+    taskEl.appendChild(newDiv3);
+    total += weeds.price;
+    updateTotal();
+    weeds.button.disabled = true;
+    newDiv3.addEventListener('click', function(){
+        this.remove();
+        total -= weeds.price;
+        console.log(total);
+        updateTotal();
+    })
 });
 
 
-// const removeEl = document.querySelectorAll('.remove');
-// console.log(removeEl);
-
-mowBtn.addEventListener('click', function() {
-    servicesToBuy.push(service2[0])
-    taskEl.innerHTML += `<div><p>${service2[0]}<span class="light-grey remove">remove</span></p></div>`;
-    amountEl.innerHTML += `<div class="align-right"><p><span class="light-grey">$</span>${service2[1]}</p></div>`;
-    notesEl.innerHTML = `<div><p>We accept cash, credit card, or paypal</p></div>`
-    total += service2[1];
-    totalEl.innerHTML = `<span class="light-grey">$</span>${total}`;
-    mowBtn.disabled = true;
-});
-
-weedsBtn.addEventListener('click', function() {
-    servicesToBuy.push(service3[0]);
-    taskEl.innerHTML += `<div><p>${service3[0]}<span class="light-grey remove">remove</span></p></div>`;
-    amountEl.innerHTML += `<div class="align-right"><p><span class="light-grey">$</span>${service3[1]}</p></div>`;
-    notesEl.innerHTML = `<div><p>We accept cash, credit card, or paypal</p></div>`
-    total += service3[1];
-    totalEl.innerHTML = `<span class="light-grey">$</span>${total}`;
-    weedsBtn.disabled = true;
-});
 
 sendBtn.addEventListener('click', function(){
-    reset();
+    const hideEl = document.querySelector('#hide-el');
+    // hideEl.classList.add('hide');
+    hideEl.style.visibility = "hidden";
+    console.log(hideEl);
+    total = 0;
+    wash.button.disabled = false;
+    mow.button.disabled = false;
+    weeds.button.disabled = false;
+    taskEl.innerHTML='';
+    updateTotal()
 })
